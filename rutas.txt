@@ -1,0 +1,38 @@
+Customer: 8081
+C:\Users\25191\OneDrive\Documentos\MicroServicios\paymentchainparent\businessdomain\customer\target\customer-0.0.1-SNAPSHOT.jar
+
+Product: 8083
+C:\Users\25191\OneDrive\Documentos\MicroServicios\paymentchainparent\businessdomain\MicroServicioProduct\target\product-0.0.1-SNAPSHOT.jar
+
+transaccion: 8084
+C:\Users\25191\OneDrive\Documentos\MicroServicios\paymentchainparent\businessdomain\transaccion\target\transaccion-0.0.1-SNAPSHOT.jar
+
+
+Levantar servicios:
+Customer:
+Local: 
+Java -jar C:\Users\25191\OneDrive\Documentos\MicroServicios\paymentchainparent\businessdomain\customer\target\customer-0.0.1-SNAPSHOT.jar 
+Dev:
+Java -jar C:\Users\25191\OneDrive\Documentos\MicroServicios\paymentchainparent\businessdomain\customer\target\customer-0.0.1-SNAPSHOT.jar --spring.profiles.active=dev 
+Producion 
+Java -jar C:\Users\25191\OneDrive\Documentos\MicroServicios\paymentchainparent\businessdomain\customer\target\customer-0.0.1-SNAPSHOT.jar --spring.profiles.active=prod
+
+
+Product: 
+Java -jar C:\Users\25191\OneDrive\Documentos\MicroServicios\paymentchainparent\businessdomain\MicroServicioProduct\target\product-0.0.1-SNAPSHOT.jar 
+
+transaccion :
+Java -jar C:\Users\25191\OneDrive\Documentos\MicroServicios\paymentchainparent\businessdomain\transaccion\target\transaccion-0.0.1-SNAPSHOT.jar 
+
+
+Swagger :
+
+transaccion :
+http://localhost:8084/swagger-ui/index.html#/transaction-rest-controller
+
+customer:
+http://localhost:8081/swagger-ui/index.html#/customer-rest-controller
+
+Product :
+http://localhost:8083/swagger-ui/index.html#/product-rest-controller
+

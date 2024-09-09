@@ -1,0 +1,111 @@
+En JSF (JavaServer Faces), la etiqueta <f:subview> se utiliza para encapsular
+una sección de una vista (página XHTML) que puede ser reutilizada o incluidas dinámicamente en otras vistas.
+Su función principal es crear un subárbol dentro del árbol de componentes de JSF, lo que permite agrupar componentes bajo 
+un nuevo contexto de nombres para evitar conflictos de nombres de IDs.
+
+Características principales de <f:subview>
+Aislar un grupo de componentes:
+
+Se puede utilizar para organizar componentes y agruparlos bajo un prefijo de identificador único. Esto es útil cuando deseas evitar 
+colisiones de identificadores entre diferentes secciones de una página.
+Reutilización de secciones de una vista:
+
+Se usa comúnmente en combinación con la etiqueta <ui:include> para incluir fragmentos de código (subvistas) en diferentes páginas 
+sin duplicar contenido.
+Nuevo espacio de nombres:
+
+Cuando los componentes se encuentran dentro de un <f:subview>, sus identificadores (id) están dentro de un nuevo 
+contexto de espacio de nombres, por lo que no colisionarán con otros componentes en la misma vista.
+
+Estructura de <f:subview>
+La sintaxis básica es la siguiente:
+
+<f:subview id="subviewId">
+    <!-- Aquí van los componentes que estarán dentro de la subvista -->
+</f:subview>
+
+id: Es el identificador único de la subvista. Los componentes dentro de esta subvista 
+tendrán sus identificadores prefijados con este valor.
+Todo lo que se coloque dentro del <f:subview> estará bajo el nuevo espacio de nombres
+
+Ejemplo de uso de <f:subview></f:subview>
+
+<h:form id="mainForm">
+    <f:subview id="subSection">
+        <h:outputText value="Campo 1:" />
+        <h:inputText id="input1" value="#{bean.value1}" />
+        <h:outputText value="Campo 2:" />
+        <h:inputText id="input2" value="#{bean.value2}" />
+    </f:subview>
+</h:form>
+
+En este ejemplo:
+
+Los componentes dentro de <f:subview> tendrán los identificadores prefijados con el valor de id del subview, que es subSection.
+Por lo tanto, los campos de entrada tendrán identificadores completos como mainForm:subSection:input1 y mainForm:subSection:input2,
+lo que evita conflictos si existen otros campos con el mismo id fuera del subview.
+
+Uso con <ui:include>
+Un escenario común es utilizar <f:subview> junto con <ui:include> para incluir un fragmento de código en varias páginas.
+
+<f:subview id="includedSubview">
+    <ui:include src="/resources/fragments/subvista.xhtml" />
+</f:subview>
+
+
+En JSF (JavaServer Faces), la etiqueta <f:subview> se utiliza para encapsular una sección de una vista (página XHTML) que puede ser reutilizada o incluidas dinámicamente en otras vistas. Su función principal es crear un subárbol dentro del árbol de componentes de JSF, lo que permite agrupar componentes bajo un nuevo contexto de nombres para evitar conflictos de nombres de IDs.
+
+Características principales de <f:subview>
+Aislar un grupo de componentes:
+
+Se puede utilizar para organizar componentes y agruparlos bajo un prefijo de identificador único. Esto es útil cuando deseas evitar colisiones de identificadores entre diferentes secciones de una página.
+Reutilización de secciones de una vista:
+
+Se usa comúnmente en combinación con la etiqueta <ui:include> para incluir fragmentos de código (subvistas) en diferentes páginas sin duplicar contenido.
+Nuevo espacio de nombres:
+
+Cuando los componentes se encuentran dentro de un <f:subview>, sus identificadores (id) están dentro de un nuevo contexto de espacio de nombres, por lo que no colisionarán con otros componentes en la misma vista.
+Estructura de <f:subview>
+La sintaxis básica es la siguiente:
+
+xml
+Copiar código
+<f:subview id="subviewId">
+    <!-- Aquí van los componentes que estarán dentro de la subvista -->
+</f:subview>
+id: Es el identificador único de la subvista. Los componentes dentro de esta subvista tendrán sus identificadores prefijados con este valor.
+Todo lo que se coloque dentro del <f:subview> estará bajo el nuevo espacio de nombres.
+Ejemplo de uso de <f:subview>
+xml
+Copiar código
+<h:form id="mainForm">
+    <f:subview id="subSection">
+        <h:outputText value="Campo 1:" />
+        <h:inputText id="input1" value="#{bean.value1}" />
+        <h:outputText value="Campo 2:" />
+        <h:inputText id="input2" value="#{bean.value2}" />
+    </f:subview>
+</h:form>
+En este ejemplo:
+
+Los componentes dentro de <f:subview> tendrán los identificadores prefijados con el valor de id del subview,
+ que es subSection. Por lo tanto, los campos de entrada tendrán identificadores completos como mainForm:subSection:input1
+  y mainForm:subSection:input2, lo que evita conflictos si existen otros campos con el mismo id fuera del subview.
+Uso con <ui:include>
+Un escenario común es utilizar <f:subview> junto con <ui:include> para incluir un fragmento de código en varias páginas.
+
+xml
+Copiar código
+<f:subview id="includedSubview">
+    <ui:include src="/resources/fragments/subvista.xhtml" />
+</f:subview>
+En este caso:
+
+El contenido de subvista.xhtml se incluye en la vista actual bajo un subárbol con el identificador includedSubview,
+ lo que asegura que los IDs de los componentes incluidos no entren en conflicto con los de la vista principal.
+Resumen de ventajas
+Modularidad: Facilita la organización modular de la vista.
+Reutilización: Permite la reutilización de componentes o secciones completas de una vista en varias partes de una aplicación.
+Espacio de nombres: Ayuda a evitar colisiones de IDs, ya que encapsula los componentes en un subárbol.
+En resumen, <f:subview> es útil para organizar y modularizar las vistas JSF, proporcionando un mecanismo
+     flexible para agrupar componentes y evitar conflictos de nombres cuando trabajas con componentes complejos o reutilizables.

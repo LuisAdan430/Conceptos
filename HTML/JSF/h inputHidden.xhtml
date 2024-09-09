@@ -1,0 +1,40 @@
+En el contexto de JSF (JavaServer Faces),
+ la etiqueta <h:inputHidden> se utiliza para renderizar un campo HTML de tipo oculto (<input type="hidden">). 
+ Un campo oculto es un control de formulario que no se muestra visualmente en la página,
+  pero permite almacenar valores que pueden ser enviados al servidor cuando se envía el formulario.
+
+Estructura y significado de <h:inputHidden>
+<h:inputHidden>: Esta es la etiqueta de JSF que representa un campo oculto en la vista.
+value: El valor que será enviado al servidor. Se puede vincular a una propiedad de un bean administrado 
+usando expresiones EL (#{}).
+
+<h:form>
+    <h:inputHidden value="#{beanHidden.value}" />
+    <h:commandButton value="Submit" action="#{beanHidden.processValue}" />
+</h:form>
+
+En este ejemplo:
+
+Se crea un campo oculto que contiene un valor proveniente de la propiedad value de un bean de respaldo llamado beanHidden.
+Cuando el formulario es enviado (al hacer clic en el botón), el valor oculto se envía al servidor y puede ser procesado 
+por el bean en el método processValue.
+
+Uso típico
+El campo oculto se utiliza cuando se quiere:
+
+Mantener valores entre solicitudes sin que el usuario los vea.
+Pasar datos entre formularios o vistas sin que estén visibles en la interfaz de usuario.
+Por ejemplo, puede almacenar un ID o un token de seguridad que se debe enviar junto con el formulario para 
+validar la solicitud, pero no se desea que el usuario lo modifique.
+
+Estructura resultante en HTML
+En el navegador, el componente h:inputHidden se renderiza como:
+
+<input type="hidden" name="formulario:hiddenField" value="hiddenValue">
+
+Aquí:
+
+name es el identificador del campo oculto.
+value es el valor almacenado en este campo, que puede ser dinámico o fijo según lo configurado en el bean.
+En resumen, <h:inputHidden> es útil para almacenar y enviar datos que no deben ser visibles o
+modificables por el usuario, pero que son necesarios en el ciclo de vida del formulario o para la lógica del servidor.

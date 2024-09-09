@@ -1,0 +1,34 @@
+Una clase abstracta en Java es una clase que no se puede instanciar directamente; es decir, no puedes crear objetos de una clase abstracta. 
+Su propósito principal es servir como una base para otras clases, que deben extenderla. Las clases abstractas pueden contener métodos 
+abstractos (métodos que no tienen implementación, solo la firma del método) y métodos concretos (métodos con implementación).
+
+1.-Características de una Clase Abstracta:
+       Declaración:
+              Se declara utilizando la palabra clave abstract.
+              Una clase abstracta puede contener cero o más métodos abstractos.
+
+2.- Métodos Abstractos:
+      Son métodos que solo tienen una declaración, pero no una implementación.
+      Las subclases de una clase abstracta deben proporcionar implementaciones para todos los métodos abstractos,
+      a menos que la subclase también sea abstracta.
+
+3.- Métodos Concretos:
+      Una clase abstracta puede tener métodos con cuerpo (implementación), 
+      que pueden ser usados o sobrescritos por las subclases.
+
+4.- Instanciación:
+      No se puede instanciar directamente. Solo puedes instanciar una subclase
+      concreta de la clase abstracta.
+
+5.- Herencia:
+      Las clases que heredan de una clase abstracta deben implementar todos los métodos abstractos
+      de la clase padre, a menos que también sean declaradas abstractas.
+
+
+Cuándo Usar una Clase Abstracta:
+        Generalización: 
+                Cuando tienes un concepto general que puede ser descrito pero no completamente implementado,
+                y necesitas que las subclases concreten algunos comportamientos específicos.
+        Herencia: Para forzar que las subclases implementen ciertos métodos, asegurando que todas las subclases
+                tengan comportamientos específicos. Reutilización: Si tienes métodos comunes que pueden ser usados
+                 por todas las subclases, puedes colocarlos en la clase abstracta para evitar duplicación de código.

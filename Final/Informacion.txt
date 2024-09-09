@@ -1,0 +1,9 @@
+En Java, la palabra clave final se utiliza para restringir la modificación de variables,
+ métodos y clases. Dependiendo de dónde se aplique, final tiene diferentes significados:
+
+1. Variables final:
+Cuando una variable se declara como final, su valor no puede cambiar después de haber sido asignado.
+Esto significa que una variable final debe ser inicializada solo una vez, ya sea al momento de la declaración o dentro de un constructor.
+Se aplica tanto a variables primitivas como a referencias de objetos. Si una referencia de objeto es final, la referencia no puede cambiar,
+ pero los valores de los atributos del objeto al que apunta sí pueden modificarse.
+

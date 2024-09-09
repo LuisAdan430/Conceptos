@@ -1,0 +1,33 @@
+Una interfaz en Java es un tipo de referencia que solo puede contener declaraciones de métodos abstractos (sin implementación)
+ y constantes (variables estáticas finales). Es un contrato que define un conjunto de métodos que una clase debe implementar si decide 
+ "heredar" esa interfaz. A diferencia de una clase abstracta, una interfaz no tiene estado ni comportamiento concreto
+  (hasta Java 8, donde se introdujeron los métodos predeterminados).
+
+Características de una Interfaz:
+    Declaración:
+        Se declara utilizando la palabra clave interface.
+        Todos los métodos dentro de una interfaz son implícitamente public y abstract (hasta Java 8).
+
+Métodos en una Interfaz:
+
+Abstractos: Estos son los métodos sin cuerpo (implementación),
+ que deben ser implementados por las clases que "implementen" la interfaz.
+Default: A partir de Java 8, una interfaz puede tener métodos default,
+ que tienen una implementación predeterminada.
+Static: También a partir de Java 8, una interfaz puede tener métodos static,
+ que pueden ser invocados sin una instancia de la clase que implementa la interfaz
+
+Variables en una Interfaz:
+
+Todas las variables dentro de una interfaz son implícitamente public, static, y final.
+ Esto significa que son constantes.
+
+Herencia Múltiple:
+
+A diferencia de las clases, una clase en Java puede implementar múltiples interfaces,
+ permitiendo un tipo de herencia múltiple.
+
+Instanciación:
+
+No se puede instanciar directamente una interfaz. 
+Sin embargo, se puede utilizar como tipo de referencia.

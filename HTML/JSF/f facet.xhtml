@@ -1,0 +1,127 @@
+En JSF (JavaServer Faces), la etiqueta <f:facet> se utiliza para definir facetas, que son secciones personalizadas dentro de un
+     componente compuesto que admiten contenido específico. Las facetas permiten insertar contenido en áreas predefinidas de un componente 
+     JSF, como por ejemplo la cabecera o el pie de un componente de tabla o panel.
+
+Características principales de <f:facet>
+Facetas específicas:
+
+Las facetas son áreas de componentes que tienen un propósito especial, como una cabecera, pie de página o una sección de
+ contenido personalizada. Los componentes JSF o PrimeFaces tienen áreas que se pueden "rellenar" con contenido usando <f:facet>.
+Contenido dinámico:
+
+Permiten definir contenido dinámico en lugares predefinidos dentro de los componentes. Esto le da más flexibilidad para personalizar 
+la interfaz de usuario, sin necesidad de modificar la estructura del componente en sí.
+Comportamiento variable:
+
+Dependiendo del componente que se esté utilizando, la faceta puede tener un comportamiento diferente. Por ejemplo, en una tabla 
+(<h:dataTable>), una faceta puede representar una cabecera, mientras que en un panel (<p:panel>), una faceta puede definir el
+     contenido de la cabecera.
+Atributo principal
+name: Define el nombre de la faceta. Este nombre determina qué parte del componente será personalizada, y depende del componente
+ que se esté utilizando. Los nombres más comunes de facetas son header, footer, first, last, entre otros, dependiendo del componente.
+Ejemplo básico de uso de <f:facet>
+Un caso típico de uso de facetas es en el componente <h:dataTable>, donde se puede personalizar el encabezado o pie de tabla.
+
+Ejemplo con <h:dataTable>
+
+<h:dataTable value="#{bean.listaPersonas}" var="persona">
+    <f:facet name="header">
+        <h:outputText value="Lista de Personas" />
+    </f:facet>
+
+    <h:column>
+        <f:facet name="header">
+            <h:outputText value="Nombre" />
+        </f:facet>
+        <h:outputText value="#{persona.nombre}" />
+    </h:column>
+
+    <h:column>
+        <f:facet name="header">
+            <h:outputText value="Edad" />
+        </f:facet>
+        <h:outputText value="#{persona.edad}" />
+    </h:column>
+
+    <f:facet name="footer">
+        <h:outputText value="Total de personas: #{bean.totalPersonas}" />
+    </f:facet>
+</h:dataTable>
+En este ejemplo:
+
+Faceta header: Se utiliza para definir el encabezado de la tabla y de las columnas. Aquí se inserta el texto "Lista de Personas" 
+como encabezado de la tabla y "Nombre" y "Edad" como encabezados de las columnas.
+Faceta footer: Se utiliza para mostrar un pie de página en la tabla con el total de personas.
+Uso de facetas en otros componentes
+Ejemplo con <p:panel>
+En un panel de PrimeFaces, puedes definir una faceta para la cabecera personalizada:
+
+
+<p:panel>
+    <f:facet name="header">
+        <h:outputText value="Cabecera Personalizada" />
+    </f:facet>
+    
+    <h:outputText value="Este es el contenido del panel." />
+</p:panel>
+Aquí:
+
+La faceta header se utiliza para definir un contenido personalizado en la cabecera del panel.
+Ejemplo con <p:column> en PrimeFaces
+Las facetas también son muy comunes en componentes de tabla avanzados como <p:dataTable>, donde las facetas permiten agregar filtros,
+     encabezados y pies de página.
+
+
+<p:dataTable value="#{bean.listaPersonas}" var="persona">
+    <p:column>
+        <f:facet name="header">
+            <h:outputText value="Nombre" />
+        </f:facet>
+        <h:outputText value="#{persona.nombre}" />
+    </p:column>
+
+    <p:column>
+        <f:facet name="header">
+            <h:outputText value="Edad" />
+        </f:facet>
+        <h:outputText value="#{persona.edad}" />
+    </p:column>
+
+    <f:facet name="footer">
+        <h:outputText value="Total de personas: #{bean.totalPersonas}" />
+    </f:facet>
+</p:dataTable>
+En este ejemplo, el componente <p:dataTable> de PrimeFaces utiliza facetas para definir encabezados personalizados en las columnas y
+     un pie de página.
+
+Facetas en otros componentes JSF
+<h:panelGrid>: Puedes utilizar facetas para definir un contenido personalizado para diferentes secciones, como cabeceras de filas o columnas.
+xml
+Copiar código
+<h:panelGrid columns="2">
+    <f:facet name="header">
+        <h:outputText value="Formulario de Usuario" />
+    </f:facet>
+
+    <h:outputText value="Nombre:" />
+    <h:inputText value="#{usuario.nombre}" />
+
+    <h:outputText value="Edad:" />
+    <h:inputText value="#{usuario.edad}" />
+</h:panelGrid>
+Aquí, la faceta header se usa para agregar una cabecera al formulario.
+
+Resumen de ventajas de <f:facet>
+Personalización: Permite personalizar áreas específicas de los componentes, como encabezados, pies de página, y otras secciones especiales.
+Flexibilidad: Las facetas ofrecen una manera flexible de agregar contenido dinámico a los componentes sin tener que reescribirlos o
+ crear nuevas clases.
+Reutilización: Facilita la reutilización de componentes, ya que diferentes partes del mismo pueden personalizarse con facetas según
+ las necesidades de cada página.
+En resumen, <f:facet> es una herramienta poderosa en JSF para insertar contenido en secciones específicas de los componentes, lo que 
+    te permite personalizar y extender la funcionalidad de manera flexible y modular.
+
+
+
+
+
+

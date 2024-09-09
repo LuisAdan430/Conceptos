@@ -1,0 +1,65 @@
+Perfecto, vamos a profundizar en los comodines limitados en Java.
+
+## Comodines Limitados
+
+### `<? extends T>`: Comodín con límite superior
+
+El comodín `<? extends T>` se utiliza cuando quieres aceptar cualquier tipo que sea un subtipo de una clase o interfaz específica `T`. Es decir, `T` puede ser una clase o una interfaz, y el comodín garantiza que los elementos en la colección sean de tipo `T` o de cualquier subclase de `T`.
+
+#### Ejemplo:
+
+```java
+public void printNumbers(List<? extends Number> list) {
+    for (Number number : list) {
+        System.out.println(number);
+    }
+}
+```
+
+En este caso, `printNumbers` puede aceptar una `List` de `Integer`, `Double`, `Float`, etc., porque todos ellos son subclases de `Number`. Sin embargo, aunque puedes leer los elementos de la lista, no puedes agregar elementos a ella dentro del método, porque el compilador no puede asegurar el tipo exacto de la lista.
+
+```java
+List<Integer> intList = List.of(1, 2, 3);
+List<Double> doubleList = List.of(1.1, 2.2, 3.3);
+
+printNumbers(intList);   // Funciona bien
+printNumbers(doubleList); // Funciona bien
+
+// No se puede agregar un nuevo número a la lista dentro del método
+```
+
+### `<? super T>`: Comodín con límite inferior
+
+El comodín `<? super T>` se usa cuando quieres aceptar cualquier tipo que sea `T` o un supertipo de `T`. Esto es útil cuando deseas agregar elementos a una colección, y deseas asegurarte de que el tipo que se está agregando es compatible.
+
+#### Ejemplo:
+
+```java
+public void addNumbers(List<? super Integer> list) {
+    list.add(1);
+    list.add(2);
+    list.add(3);
+}
+```
+
+En este caso, `addNumbers` puede aceptar una `List` de `Integer`, `Number`, o `Object`, porque todos estos son supertipos de `Integer`. Aquí, puedes agregar elementos de tipo `Integer` a la lista, pero no puedes asumir que puedes leer un `Integer` de la lista, ya que la lista podría contener cualquier supertipo de `Integer`.
+
+```java
+List<Number> numberList = new ArrayList<>();
+addNumbers(numberList); // Funciona bien
+
+List<Object> objectList = new ArrayList<>();
+addNumbers(objectList); // Funciona bien
+
+// No se puede asegurar que se puede leer un Integer de la lista, 
+// porque la lista podría contener cualquier supertipo de Integer
+```
+
+## Resumen
+
+- **`<? extends T>`**: Permite aceptar subtipos de `T`, ideal para leer datos. No puedes agregar elementos a la colección.
+- **`<? super T>`**: Permite aceptar `T` y sus supertipos, ideal para agregar datos. La lectura de la colección no garantiza el tipo específico.
+
+Estos comodines hacen que los genéricos en Java sean muy flexibles, permitiendo que el código trabaje con un rango más amplio de tipos de manera segura.
+
+Si necesitas más detalles o ejemplos adicionales, no dudes en preguntar.

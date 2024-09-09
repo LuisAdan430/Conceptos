@@ -1,0 +1,96 @@
+El componente <p:panel> en PrimeFaces es un contenedor visual que se utiliza para agrupar otros componentes de una manera 
+visualmente atractiva. Se representa como un panel con una cabecera opcional y una estructura de borde que lo separa del resto 
+del contenido, permitiendo mostrar una sección claramente diferenciada en la interfaz de usuario.
+
+Características principales de <p:panel>
+Diseño visual:
+
+Ofrece una cabecera y un cuerpo, que pueden incluir cualquier tipo de contenido JSF o PrimeFaces, como tablas, formularios, texto, etc.
+Interactividad:
+
+Soporta características avanzadas como la capacidad de colapsar o expandir el contenido, agregar íconos en la cabecera, y usar AJAX para 
+controlar su estado.
+Estilos personalizables:
+
+Permite aplicar estilos CSS personalizados tanto a la cabecera como al cuerpo, así como usar clases predefinidas de PrimeFaces o
+ definidas por el usuario para ajustar su apariencia.
+Compatibilidad con AJAX:
+
+Puede interactuar con AJAX para realizar actualizaciones parciales o dinámicas del contenido dentro del panel sin recargar toda la página.
+Atributos principales
+header: Texto que aparece en la cabecera del panel.
+toggleable: Si está en true, permite que el panel se pueda expandir o colapsar.
+collapsed: Si está en true, el panel aparece colapsado inicialmente.
+style: Permite aplicar estilos CSS directamente al panel.
+styleClass: Clase CSS que se puede aplicar para personalizar el diseño del panel.
+closable: Si está en true, permite que el panel se pueda cerrar.
+widgetVar: Nombre de la variable de JavaScript para acceder al componente desde el cliente.
+Ejemplo básico de uso de <p:panel>
+
+<p:panel header="Información del Usuario" style="width:300px;">
+    <h:outputText value="Nombre: " />
+    <h:inputText value="#{usuario.nombre}" />
+    
+    <h:outputText value="Edad: " />
+    <h:inputText value="#{usuario.edad}" />
+</p:panel>
+
+En este ejemplo:
+
+El panel tiene una cabecera con el texto "Información del Usuario".
+Dentro del cuerpo del panel, se agrupan varios componentes (<h:outputText> y <h:inputText>).
+Se le aplica un estilo CSS para definir un ancho fijo.
+Ejemplo de panel colapsable
+
+<p:panel header="Detalles del Pedido" toggleable="true" collapsed="false" style="width:400px;">
+    <h:outputText value="Producto: " />
+    <h:inputText value="#{pedido.producto}" />
+    
+    <h:outputText value="Cantidad: " />
+    <h:inputText value="#{pedido.cantidad}" />
+</p:panel>
+
+En este ejemplo:
+
+El panel es colapsable (toggleable="true"), lo que permite que el usuario lo expanda o lo colapse.
+El panel comienza expandido (collapsed="false"), pero el usuario puede hacer clic en la cabecera para colapsarlo.
+Ejemplo de panel con cierre y AJAX
+
+
+<p:panel header="Notificaciones" closable="true" toggleable="true" style="width:500px;" widgetVar="notificacionesPanel">
+    <h:outputText value="Aquí aparecerán las notificaciones." />
+</p:panel>
+
+<p:commandButton value="Mostrar Notificaciones" onclick="PF('notificacionesPanel').toggle(); return false;" />
+
+En este ejemplo:
+
+El panel tiene la opción de cerrarse (closable="true") y de colapsarse/expandirse (toggleable="true").
+Se le ha asignado el nombre de variable JavaScript notificacionesPanel con el atributo widgetVar, lo que permite 
+controlarlo desde el cliente.El botón al hacer clic ejecuta una función de PrimeFaces que colapsa o expande el panel 
+dinámicamente usando PF('notificacionesPanel').toggle();.
+
+Atributos adicionales útiles
+toggleSpeed: Especifica la velocidad en milisegundos para la animación de colapso/expansión.
+closable: Define si el panel se puede cerrar.
+closeSpeed: Define la velocidad de la animación de cierre.
+Interacción con AJAX
+Un ejemplo que utiliza AJAX para actualizar el contenido de un panel:
+
+<p:panel header="Actualización de Usuario" id="panelUsuario">
+    <h:outputText value="Nombre: #{usuario.nombre}" />
+</p:panel>
+
+<p:commandButton value="Actualizar" update="panelUsuario" action="#{usuarioBean.actualizarNombre}" />
+
+En este caso:
+
+El botón de comando actualiza el contenido del panel panelUsuario vía AJAX, sin recargar toda la página.
+Resumen de ventajas
+Presentación visual atractiva: El componente ofrece una manera estructurada y elegante de presentar contenido agrupado.
+Interactividad: Soporta características avanzadas como la capacidad de colapsar, expandir o cerrar el panel.
+Personalización: Se puede personalizar con estilos CSS y clases de estilo.
+Integración con AJAX: Se integra fácilmente con AJAX para actualizaciones parciales de contenido.
+En resumen, <p:panel> es un componente versátil en PrimeFaces que te permite organizar y presentar 
+    información de forma visualmente atractiva y dinámica, mientras ofrece capacidades interactivas como colapsar, expandir 
+    y cerrar el panel, además de permitir actualizaciones vía AJAX.

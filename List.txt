@@ -1,0 +1,28 @@
+En Java, `List<?>` es un ejemplo de un tipo genérico con un comodín (wildcard).
+ Este comodín `?` significa que la lista puede contener elementos de cualquier tipo, pero no se especifica cuál es ese tipo.
+
+El uso de `List<?>` es común cuando se desea trabajar con una lista,
+ pero no importa o no se conoce el tipo exacto de los elementos que contiene. Sin embargo, debido a que no se sabe el tipo de los elementos, 
+ las operaciones que se pueden realizar con esta lista son limitadas. Por ejemplo, no se pueden añadir elementos a la lista (excepto `null`),
+  ya que el compilador no puede verificar si el tipo del elemento es compatible con el tipo de la lista.
+
+Aquí algunos ejemplos para ilustrar:
+
+- `List<?>` podría ser una lista de cualquier tipo: `List<String>`, `List<Integer>`, `List<MiClase>`, etc.
+- Puedes iterar sobre los elementos de la lista y leerlos, pero no puedes agregar elementos a la lista sin conocer el tipo específico.
+
+**Ejemplo:**
+
+```java
+public void printList(List<?> list) {
+    for (Object element : list) {
+        System.out.println(element);
+    }
+}
+```
+
+En este caso, el método `printList` puede aceptar una lista de cualquier tipo y simplemente imprimir sus elementos.
+
+Si necesitas trabajar con un tipo específico en la lista, podrías usar un comodín limitado como `List<? extends Number>`, que significaría una lista de cualquier tipo que sea un subtipo de `Number` (por ejemplo, `Integer`, `Double`, etc.).
+
+¿Te gustaría más detalles sobre los comodines limitados o ejemplos más específicos?
