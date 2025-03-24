@@ -1,0 +1,41 @@
+Jakarta EE y Spring pueden estar juntos en un proyecto por varias razones, dependiendo de los
+requisitos de la aplicación y del ecosistema en el que trabajas. Algunas situaciones en las que esto
+podría ocurrir incluyen:
+
+1. Uso de Jakarta Persistence (JPA) con Spring Data JPA
+    Spring Boot utiliza Hibernate como proveedor de JPA, que es parte de Jakarta EE.
+    Si trabajas con entidades y repositorios en Spring, en el fondo estás usando Jakarta Persistence (jakarta.persistence.*).
+
+2. Mensajería con Jakarta JMS y Spring
+    Si tu aplicación necesita manejar colas de mensajes con Jakarta JMS, puedes integrarlo con Spring
+    Boot utilizando Spring JMS o Jakarta EE APIs directamente.
+
+    Por ejemplo, si trabajas con ActiveMQ o RabbitMQ, podrías configurar un @JmsListener en Spring
+    mientras usas objetos de jakarta.jms para la comunicación.
+
+3. Uso de Jakarta Servlet en aplicaciones Spring Boot
+    Spring Boot usa servlets para manejar peticiones HTTP, y los servlets son parte de Jakarta EE
+    (jakarta.servlet.*).
+
+    Cuando ejecutas una aplicación Spring Boot con Tomcat, Jetty o Undertow, en el fondo se están
+    usando servlets de Jakarta.
+    
+
+4. Migración de una aplicación Jakarta EE a Spring Boot
+    Si tienes una aplicación antigua basada en Jakarta EE (anteriormente Java EE) y quieres migrarla
+    progresivamente a Spring Boot, es posible que mantengas algunos módulos de Jakarta mientras
+    integras componentes de Spring.
+
+    Por ejemplo, podrías seguir usando CDI (jakarta.inject) junto con Spring para una migración
+    más fluida.
+
+5. Uso de Jakarta RESTful Web Services (JAX-RS) en Spring Boot
+    Spring Boot usa su propio mecanismo de REST con @RestController, pero si necesitas mantener
+    compatibilidad con una aplicación que usa JAX-RS (jakarta.ws.rs.*), puedes integrar JAX-RS en
+    Spring Boot con bibliotecas como Jersey o RESTEasy.
+
+6. Integración con JasperReports
+    JasperReports usa clases de jakarta.xml.bind para generar reportes en PDF, Excel, etc.
+    Si tienes una aplicación Spring Boot que usa JasperReports (net.sf.jasperreports),
+    probablemente ya estés usando algunas librerías de Jakarta
+

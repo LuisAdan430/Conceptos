@@ -1,0 +1,15 @@
+En Spring, las anotaciones estereotipadas son aquellas que indican el propósito o rol de una clase 
+dentro de la aplicación, generalmente en el contexto del patrón MVC o la inyección de dependencias.
+Estas anotaciones ayudan a Spring a detectar y gestionar automáticamente los componentes en el contenedor de Spring.
+
+Diferencias Claves
+
+Anotación	Propósito
+@Component	Genérico, cualquier bean gestionado por Spring.
+@Service	Lógica de negocio o servicio.
+@Repository	Acceso a datos, repositorios.
+@Controller	Controladores MVC.
+@RestController	Controladores REST API.
+Todas estas anotaciones hacen que las clases
+
+ sean detectadas automáticamente por Spring en el escaneo de paquetes (@ComponentScan).

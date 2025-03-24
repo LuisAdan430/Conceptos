@@ -1,0 +1,57 @@
+¿Qué es el Garbage Collector en Java?
+
+El Garbage Collector (GC) es un proceso automático de la JVM que libera memoria eliminando objetos
+que ya no se usan. Su objetivo principal es evitar fugas de memoria y optimizar el rendimiento de la
+aplicación.
+
+¿Cómo funciona el Garbage Collector?
+Identificación de objetos inalcanzables
+    Un objeto se considera inalcanzable si no tiene referencias activas desde el programa.
+    Se rastrean referencias desde el GC Root (hilos en ejecución, variables estáticas, etc.).
+
+Marcar y eliminar objetos
+    Fase de "Mark": Identifica objetos alcanzables.
+    Fase de "Sweep": Elimina los objetos no alcanzables y libera espacio.
+
+Compactación de memoria (opcional)
+    Algunos recolectores compactan la memoria después de eliminar objetos, evitando fragmentación.
+
+Generaciones en el Heap y el GC
+El Heap de Java se divide en generaciones, y el GC las maneja de forma diferente:
+    Young Generation (Objetos nuevos)
+        Eden: Aquí se crean nuevos objetos.
+        Survivor (S0 y S1): Objetos que sobreviven varias recolecciones.
+        Minor GC: Limpia objetos jóvenes con frecuencia.
+    Old Generation (Objetos longevos)
+        Contiene objetos que han vivido mucho tiempo.
+        Major GC / Full GC: Se ejecuta menos frecuentemente pero es más costoso.
+    Metaspace (Java 8+)
+        Almacena metadatos de clases
+        No está en el Heap, por lo que su manejo es diferente.
+
+Tipos de Garbage Collectors en Java
+    La JVM ofrece varios algoritmos de GC:
+    Garbage Collector	            Descripción
+    Serial GC	                    Simple, usa un solo hilo (ideal para aplicaciones pequeñas).
+    Parallel GC (Throughput GC)	    Usa múltiples hilos, optimizado para rendimiento.
+    G1 GC (Garbage First GC)	    Predeterminado desde Java 9, optimiza pausas y rendimiento.
+    ZGC y Shenandoah GC	            Diseñados para tiempos de pausa ultra bajos en sistemas grandes.
+
+¿Cómo configurar el GC en Java?
+    Puedes especificar el GC al iniciar la JVM con opciones como:
+        -XX:+UseG1GC (Usar G1 GC, predeterminado en Java 9+)
+        -XX:+UseParallelGC (Usar Parallel GC)
+        -XX:+UseZGC (Usar ZGC en Java 11+)
+
+
+¿Cuándo se ejecuta el Garbage Collector?
+    El GC se ejecuta automáticamente, pero puedes sugerir su ejecución manual con:
+    System.gc();  Sugerencia, pero la JVM puede ignorarlo
+    Runtime.getRuntime().gc();
+
+No se recomienda forzar su ejecución porque la JVM decide cuándo es el mejor momento.
+Conclusión
+    El Garbage Collector optimiza la memoria eliminando objetos inalcanzables.
+    Diferentes tipos de GC se ajustan a distintas necesidades de rendimiento.
+    Puedes configurarlo, pero la JVM decide cuándo ejecutarlo.
+

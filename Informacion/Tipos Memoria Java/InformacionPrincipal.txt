@@ -1,0 +1,72 @@
+En Java, la memoria se gestiona principalmente en dos áreas principales:
+Heap y Stack, pero también existen otras áreas especializadas.
+Aquí están los principales tipos de memoria en Java:
+
+Heap (Montículo)
+Es la memoria donde se almacenan los objetos y sus atributos.
+Es administrada por el Garbage Collector (GC).
+Existen diferentes generaciones en el Heap:
+    Young Generation: Contiene objetos jóvenes y se subdivide en
+        Eden: Aquí se crean nuevos objetos.
+        Survivor (S0 y S1): Contienen objetos que han sobrevivido varias recolecciones de basura.
+    Old Generation (Tenured): Contiene objetos de larga vida.
+    Metaspace (anteriormente PermGen): Almacena metadatos de clases y estructuras del runtime.
+
+Stack (Pila)
+    Almacena variables locales y referencias a objetos en Heap.
+    Se usa para la ejecución de métodos: cada hilo tiene su propio stack.
+    Se crean marcos de pila (stack frames) cuando se invoca un método y se destruyen cuando el método finaliza.
+
+Metaspace (Metaespacio)
+    A partir de Java 8, reemplaza PermGen.
+    Contiene metadatos de clases, métodos, información de reflexión, etc.
+    Crece dinámicamente según las necesidades de la aplicación.
+
+Registro (Registers)
+    Son registros de la CPU utilizados para almacenar variables en ejecución inmediata.
+    No es administrado directamente por Java.
+
+Memoria Compartida (Shared Memory)
+    En aplicaciones multi-hilo, se pueden compartir datos entre hilos a través de Heap.
+    Sincronización mediante synchronized, volatile, Locks, etc
+
+Resumen
+
+Tipo de Memoria	Uso
+
+Heap	                        Almacena objetos y datos compartidos.
+Stack	                        Almacena variables locales y referencias a objetos.
+Metaspace	                    Almacena metadatos de clases y métodos.
+Registro (CPU Registers)	    Memoria de acceso ultrarrápido para ejecución inmediata.
+Memoria Compartida	            Permite comunicación entre hilos.
+
+    PerGem porque no esta
+
+PermGen (Permanent Generation) ya no está en las versiones modernas de Java porque fue 
+eliminado en Java 8 y reemplazado por Metaspace.
+
+¿Por qué se eliminó PermGen?
+Tamaño fijo:
+    PermGen tenía un tamaño fijo determinado en el arranque de la JVM (-XX:PermSize y -XX:MaxPermSize).
+    Si una aplicación cargaba muchas clases dinámicamente (por ejemplo, en aplicaciones con muchos frameworks
+     como Spring o Hibernate), podía quedarse sin espacio, causando OutOfMemoryError: PermGen space.
+Gestión ineficiente:
+    La recolección de basura en PermGen no era eficiente, especialmente para aplicaciones que recargaban clases dinámicamente
+    (como servidores de aplicaciones: Tomcat, JBoss, etc.).
+Dificultad de ajuste:
+    Administrar el tamaño de PermGen era complicado, y en muchos casos, los desarrolladores
+    debían hacer ajustes manuales según el comportamiento de la aplicación.
+
+Metaspace: El reemplazo de PermGen
+    A partir de Java 8, se introdujo Metaspace, que mejora la administración de memoria para metadatos de clases.
+    Ventajas de Metaspace sobre PermGen:
+    No tiene un tamaño fijo por defecto, sino que crece dinámicamente según las necesidades de la aplicación.
+    Menos problemas de OutOfMemoryError relacionados con metadatos de clases.
+    Mayor eficiencia en la recolección de basura, ya que no está dentro del Heap como lo estaba PermGen.
+    Se puede limitar su tamaño con -XX:MaxMetaspaceSize, pero no es obligatorio.
+
+¿Cómo afecta esto a los desarrolladores?
+    Si trabajas con Java 8 o superior, ya no necesitas preocuparte por PermGen.
+    Si usas una versión antigua (Java 7 o anterior), debes configurar -XX:MaxPermSize 
+    manualmente para evitar errores de memoria.
+
