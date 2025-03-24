@@ -114,8 +114,11 @@ repositorio de dependencias
 settings.xml
 Parámetro maven que forza a que se descarguen de nuevo las dependencias del proyecto:
 -U
-¿En maven Para qué sirve el comando Install?
-Para compilar el proyecto
+/*
+    * ¿En maven Para qué sirve el comando Install?
+    * Para compilar el proyecto
+*/
+/*
 Un ________ proporciona una solución a un problema de diseño. Debe cumplir con diferentes
 características, como la efectividad al resolver problemas similares en ocasiones anteriores.
 Por lo tanto, debe ser reutilizable, es decir, aplicable a diferentes problemas en diferentes
