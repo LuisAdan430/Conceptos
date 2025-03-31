@@ -77,4 +77,5 @@ public class ShutdownListener {
     *  Si quieres que algo pase antes de recibir peticiones, usa ApplicationStartedEvent.
     *  Si quieres que algo pase cuando el contexto de Spring se refresca, usa ContextRefreshedEvent.
     *  Si necesitas guardar información al cerrar la aplicación, usa ContextClosedEvent.
+    *  <Pruebas>
 */
