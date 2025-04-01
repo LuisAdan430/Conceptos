@@ -83,3 +83,89 @@ public class UsuarioDAO {
 
     ^ Compatibilidad con otras anotaciones: Puede usarse junto con otras anotaciones como @Component, @Service, o @Controller, dependiendo del contexto y la arquitectura del proyecto.
 */
+/*
+    TODO: Informacion de IA Deepseek
+    & La anotación @Repository es una de las anotaciones clave en Spring y Spring Data, utilizada para marcar
+    & una clase como un componente de acceso a datos (DAO - Data Access Object). A continuación, te proporciono toda la información relevante sobre esta etiqueta:
+    & Definición y Propósito
+    & @Repository es una anotación de Spring (org.springframework.stereotype.Repository) que indica que una clase es un repositorio, es decir,
+    & un componente encargado de interactuar con una capa de persistencia (base de datos, API externa, etc.).
+    & Forma parte de las anotaciones estereotipo de Spring (junto con @Service, @Controller, etc.).
+    & Su principal función es:
+    & Identificar la clase como un bean de Spring (para que sea gestionada por el contenedor de IoC).
+    & Proporcionar traducción automática de excepciones (por ejemplo, convierte excepciones específicas de JPA/Hibernate en excepciones unchecked de Spring DataAccessException).
+    & Uso en Spring Data
+    & En Spring Data (JPA, MongoDB, etc.), @Repository se usa comúnmente en interfaces que extienden repositorios de Spring Data, aunque no es obligatorio 
+    & porque Spring Data ya las detecta automáticamente. Ejemplo:
+    & Ejemplo con JPA
+*/
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository //* Opcional en Spring Data JPA (ya se hereda de JpaRepository)
+public interface UserRepository extends JpaRepository<User, Long> {
+    //*  Métodos personalizados o heredados (save(), findAll(), etc.)
+}
+/*
+    TODO: Ejemplo con una implementación manual
+*/
+@Repository
+public class UserDaoImpl implements UserDao {
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+
+    @Override
+    public User findById(Long id) {
+        return jdbcTemplate.queryForObject("SELECT * FROM users WHERE id = ?", new UserRowMapper(), id);
+    }
+}
+/*
+    * Beneficios Clave
+    * Traducción de Excepciones
+    * Spring convierte excepciones específicas de tecnologías de persistencia (como PersistenceException en JPA o SQLException en JDBC) 
+    * en excepciones propias de Spring (DataAccessException), que son unchecked (no requieren try-catch).
+    * Integración con Spring
+    * Al marcarla con @Repository, la clase se registra como un bean en el contexto de Spring y puede ser inyectada con @Autowired.
+    * Claridad Semántica
+    * Indica claramente que la clase/interfaz es parte de la capa de persistencia.
+    * Diferencia con @Component
+    * @Repository es una especialización de @Component (ambas registran un bean en Spring).
+    * La diferencia clave es que @Repository** habilita la **traducción automática de excepciones**, mientras que @Component` no.
+    * ¿Es Obligatoria en Spring Data?
+    * No, en repositorios que extienden JpaRepository, MongoRepository, etc., Spring Data ya los detecta sin necesidad de @Repository.
+    * Sí es necesaria si:
+    * Implementas un repositorio manualmente (sin usar Spring Data).
+    * Quieres garantizar que Spring traduzca las excepciones.
+    * Ejemplo de Traducción de Excepciones
+    * Si ocurre un error en JPA (como una violación de constraint), Spring convierte:
+*/
+try {
+    userRepository.save(user);
+} catch (DataIntegrityViolationException ex) {
+    //?  Excepción traducida por Spring (originalmente podría ser SQLException o PersistenceException)
+}
+/*
+    TODO: Configuración Adicional
+    TODO: Si usas escaneo de componentes, asegúrate de que el paquete del repositorio esté incluido:
+*/
+
+@SpringBootApplication
+@EnableJpaRepositories("com.example.repository") // * Para Spring Data JPA
+@ComponentScan("com.example")
+public class MyApp { ... }
+
+/*
+    TODO: Resumen
+    TODO: Aspecto                       Detalle
+    TODO: Paquete                       org.springframework.stereotype.Repository
+    TODO: Propósito                     Marcar un componente como repositorio (acceso a datos).
+    TODO: Traducción de excepciones     Convierte excepciones de persistencia en DataAccessException.
+    TODO: Alternativa                   @Component (sin traducción de excepciones).
+    TODO: Uso típico                    Interfaces de Spring Data o implementaciones manuales de DAOs.
+
+    ! Buenas Prácticas
+    ! Úsala en implementaciones manuales de DAOs (no siempre es necesaria en Spring Data JPA/MongoDB).
+    ! Combínala con @Transactional para operaciones de escritura.
+    ! Evita lógica de negocio en clases con @Repository (de eso se encarga @Service).
+
+*/
