@@ -55,4 +55,31 @@ public class UsuarioDao {
     ^  @Repository              Capa de persistencia (DAO/Repositorio)          ✅                                   ✅
 
     *  Nota: Aunque @Repository es opcional con Spring Data JPA, se recomienda usarla para un mejor manejo de excepciones.
+    *  La etiqueta @Repository no se menciona directamente en los resultados de búsqueda proporcionados, pero parece estar relacionada con Java y Spring Framework.
+    *  A continuación, te proporciono información general sobre esta etiqueta en el contexto de Spring.
+    *  Información sobre @Repository
+    *  La anotación @Repository es una de las anotaciones de Spring Framework utilizada para marcar clases que encapsulan la lógica de acceso a datos.
+    *  Esta anotación es parte del paquete org.springframework.stereotype y se utiliza para identificar clases que actúan como capas de acceso a datos, como DAOs (Data Access Objects).
+    *  Propósito
+    *  El propósito principal de @Repository es:
+    *  Identificar clases de acceso a datos: Ayuda a Spring a identificar automáticamente estas clases durante el escaneo de componentes, lo que permite inyectar dependencias automáticamente.
+    *  Manejo de excepciones: Spring proporciona un mecanismo para traducir excepciones de acceso a datos a una capa más abstracta y manejable, 
+    *  lo que facilita el manejo de errores en la capa de datos.
+    *  Uso
+    *  Para usar @Repository, simplemente anota la clase que contiene la lógica de acceso a datos con esta anotación. Por ejemplo:
+*/
+@Repository
+public class UsuarioDAO {
+    //* Implementación de métodos para acceso a datos
+}
+/*
+    ^ Beneficios
+    ^ Inyección automática de dependencias: Spring puede inyectar automáticamente instancias de clases anotadas con @Repository en otras clases que las necesiten.
+
+    ^ Capa de abstracción para excepciones: Ayuda a manejar excepciones de acceso a datos de manera más robusta.
+
+    ^ Consideraciones
+    ^ No es obligatorio: Aunque es útil para identificar clases de acceso a datos, no es obligatorio usar @Repository si no se necesita el manejo automático de excepciones o si se prefiere otro enfoque para la inyección de dependencias.
+
+    ^ Compatibilidad con otras anotaciones: Puede usarse junto con otras anotaciones como @Component, @Service, o @Controller, dependiendo del contexto y la arquitectura del proyecto.
 */
