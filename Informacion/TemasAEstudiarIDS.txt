@@ -14,7 +14,7 @@
 13.	¿Conoces los 3 estados de Circuit Breaker?
 14.	¿Conoces Oauth?
 15.	¿Me puedes explicar un flujo de cómo funciona Oauth?
-16.	¿Has trabajado con los JSon web tokens? ¿cómo están conformados?
+16.	¿Has trabajado con los JSon web tokens? ¿cómo están conformados los JSon web token?
 17.	¿Qué es la autenticación?
 18.	¿Estás familiarizado con los principios (5) SOLID?
 
