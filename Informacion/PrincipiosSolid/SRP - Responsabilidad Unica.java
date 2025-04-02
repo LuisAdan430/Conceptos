@@ -102,7 +102,4 @@ public class GeneradorReporte {
     ^       Cada clase debe tener una sola razón para cambiar.
     ^       Separa responsabilidades en clases diferentes.
     ^       Facilita la mantenibilidad, pruebas y extensibilidad del código. 
-
-
-
 */
