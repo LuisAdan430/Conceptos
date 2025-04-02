@@ -8,6 +8,7 @@
 8.	¿Qué es el coverage en Sonar?
 9.	Spring: hay un archivo donde poner la configuración de las urls, ¿en dónde lo haces?
 10.	¿Conoces cuáles son los estereotipos en Spring?
+
 11.	¿Conoces los scope?
 12.	¿Conoces el patrón Circuit Breaker?
 13.	¿Conoces los 3 estados de Circuit Breaker?
