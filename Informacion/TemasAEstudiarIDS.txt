@@ -1,0 +1,30 @@
+1.	Platícame de tu último proyecto. ¿Cuáles eran tus responsabilidades? ¿El desarrollo era con Spring Boot?
+2.	¿Qué es la inyección de dependencias?
+3.	¿Sabes qué patrón de diseño ocupa?
+4.	¿Hay 3 formas de realizar la inyección de dependencias en spring, cuáles son?
+5.	¿Hablando de la capa de repository, con qué has trabajado? 
+6.	¿Con qué framework tienes experiencia para pruebas unitarias?
+7.	¿Conoces alguna herramienta de análisis de código estático?
+8.	¿Qué es el coverage en Sonar?
+9.	Spring: hay un archivo donde poner la configuración de las urls, ¿en dónde lo haces?
+10.	¿Conoces cuáles son los estereotipos en Spring?
+11.	¿Conoces los scope?
+12.	¿Conoces el patrón Circuit Breaker?
+13.	¿Conoces los 3 estados de Circuit Breaker?
+14.	¿Conoces Oauth?
+15.	¿Me puedes explicar un flujo de cómo funciona Oauth?
+16.	¿Has trabajado con los JSon web tokens? ¿cómo están conformados?
+17.	¿Qué es la autenticación?
+18.	¿Estás familiarizado con los principios (5) SOLID?
+
+1.	¿En qué área has trabajado? Nos interesa principalmente la parte de microservicios.
+2.	¿Me puedes comentar para qué nos sirve la librería de Spring Web?
+3.	¿Para qué sirve Rest Controller?
+4.	¿En @repository, para qué nos sirve Spring Data?
+5.	¿Cuál sería la diferencia si utilizáramos JDCV Template?
+6.	Ya tenemos los servicios, nos conectamos a base de datos, ¿cómo se conecta a otro microservicio?
+7.	¿Has escuchado del protocolo de Oauth? ¿para qué sirve? ¿cómo funciona?
+8.	¿Has trabajado con los Json web tokens? ¿cómo están conformados? (3 partes)
+9.	Dentro del protocolo HTTP, la información viaja en texto plano, ¿si quisiera que viajara encriptada cómo lo realizaría?
+10.	¿Me puedes decir la diferencia entre autorización y autenticación?
+11.	¿Has manejado los principios SOLID? ¿de qué tratan?
