@@ -17,3 +17,6 @@ public class UsuarioRepositorio {
         return jdbcTemplate.query("SELECT * FROM usuarios", new UsuarioMapper());
     }
 }
+/*
+    * Uso en Spring: JdbcTemplate, RestTemplate.
+*/
