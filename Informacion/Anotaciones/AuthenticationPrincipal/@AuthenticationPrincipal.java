@@ -77,5 +77,30 @@ public String nombre(@AuthenticationPrincipal(expression = "nombreCompleto") Str
 }
 /*
     * (Esto funciona gracias a Spring Expression Language (SpEL))
+    ^ Entonces me estas diciendo que esta etiqueta sirve solo paara obtener datos de usuario
+    * ¡Exactamente! 🎯 La anotación @AuthenticationPrincipal sirve específicamente para acceder a los datos del usuario 
+    * autenticado dentro del contexto de Spring Security.
+    * Entonces, ¿para qué se usa?
+    * Se usa únicamente para obtener información del usuario que ya inició sesión, 
+    * y no tiene otro propósito que ese.
+    * ¿Por qué es útil?
+    * Porque te evita tener que acceder manualmente al SecurityContextHolder, y te da directamente el
+    * objeto que representa al usuario.
+    * Por ejemplo, en lugar de hacer esto:
 */
+Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+MiUsuario usuario = (MiUsuario) auth.getPrincipal();
 
+/*
+    * Puedes simplemente hacer esto:
+*/
+@GetMapping("/perfil")
+public ResponseEntity<?> perfil(@AuthenticationPrincipal MiUsuario usuario) {
+    return ResponseEntity.ok(usuario);
+}
+/*
+    * ¿Qué hace?                                    ¿Para qué sirve?
+    * Inyecta el "principal" (usuario)              Obtener el usuario autenticado en tus controladores
+    * Soporta clases que implementen UserDetails    Acceder a propiedades del usuario como email, nombre, roles, etc.
+    * Se puede usar con SpEL (expression)           Obtener propiedades específicas directamente
+*/
