@@ -81,4 +81,68 @@ public void customizeBinding(WebDataBinder binder) {
     * Es equivalente a usar @ControllerAdvice + @ResponseBody, es decir
     * devuelve automáticamente JSON o XML en las respuestas, ideal para APIs
     * REST.
+    * Un ejemplo completo y realista de cómo usar @RestControllerAdvice para manejar errores globalmente en una API REST con Spring Boot.
+    * Escenario:
+    * Supongamos que tienes una API que lanza una excepción personalizada
+    * RecursoNoEncontradoException. Queremos manejar esa excepción de forma
+    * global y devolver una respuesta JSON clara al cliente.
+    * Crear una excepción personalizada
 */
+public class RecursoNoEncontradoException extends RuntimeException {
+    public RecursoNoEncontradoException(String mensaje) {
+        super(mensaje);
+    }
+}
+/*
+    * Crear el handler global con @RestControllerAdvice
+*/
+
+@RestControllerAdvice
+public class ManejadorGlobalExcepciones {
+
+    @ExceptionHandler(RecursoNoEncontradoException.class)
+    public ResponseEntity<Map<String, Object>> manejarRecursoNoEncontrado(RecursoNoEncontradoException ex) {
+        Map<String, Object> error = new LinkedHashMap<>();
+        error.put("timestamp", LocalDateTime.now());
+        error.put("mensaje", ex.getMessage());
+        error.put("codigo", HttpStatus.NOT_FOUND.value());
+        return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<Map<String, Object>> manejarErroresGenerales(Exception ex) {
+        Map<String, Object> error = new LinkedHashMap<>();
+        error.put("timestamp", LocalDateTime.now());
+        error.put("mensaje", "Error inesperado: " + ex.getMessage());
+        error.put("codigo", HttpStatus.INTERNAL_SERVER_ERROR.value());
+        return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+}
+/*
+    * Controlador que lanza la excepción
+*/
+@RestController
+@RequestMapping("/api/usuarios")
+public class UsuarioController {
+
+    @GetMapping("/{id}")
+    public ResponseEntity<String> obtenerUsuario(@PathVariable Long id) {
+        if (id != 1) {
+            throw new RecursoNoEncontradoException("Usuario con ID " + id + " no encontrado.");
+        }
+        return ResponseEntity.ok("Usuario encontrado");
+    }
+}
+/*
+    * Resultado esperado (ejemplo de respuesta JSON)
+    * Request:
+*/
+GET /api/usuarios/99
+/*
+    * Response:
+*/
+{
+  "timestamp": "2025-04-07T12:45:00.123",
+  "mensaje": "Usuario con ID 99 no encontrado.",
+  "codigo": 404
+}
