@@ -1,0 +1,3 @@
+405
+    Method Not Allowed
+        El método HTTP usado no está permitido para el recurso solicitado (por ejemplo, hacer un POST en un recurso que solo acepta GET).

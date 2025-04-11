@@ -1,0 +1,4 @@
+409 
+    Conflict
+        La solicitud no pudo ser completada debido a un conflicto con el estado actual del recurso (por ejemplo,
+        intento de crear un recurso que ya existe).

@@ -1,0 +1,3 @@
+400
+    Bad Request
+        La solicitud no se pudo procesar debido a un error de sintaxis o datos inválidos.

@@ -1,0 +1,3 @@
+401
+    Unauthorized
+        El cliente no está autorizado para acceder al recurso. Generalmente, falta o es incorrecto el token o credenciales.
