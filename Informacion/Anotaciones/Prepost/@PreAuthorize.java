@@ -78,4 +78,19 @@ public void actualizarUsuario(Long id, Usuario usuario) {
 /*
     * En este caso, la expresión comprueba si el usuario tiene el rol ADMIN o si el id pasado como
     * parámetro es igual al id del usuario autenticado.
+    *  Ventajas y Consideraciones
+    * Separación de Preocupaciones:
+    * Utilizar @PreAuthorize permite separar la lógica de autorización de la lógica de negocio, haciendo que
+    * el código sea más limpio y fácil de mantener.
+    * Flexibilidad:
+    * La capacidad de escribir expresiones SpEL personalizadas otorga una gran flexibilidad para definir reglas
+    * de acceso complejas según las necesidades de la aplicación.
+    * Integración con Spring Security:
+    * Se integra de manera nativa con el contexto de seguridad de Spring, lo que significa que se pueden
+    * aprovechar los detalles del objeto Authentication y otros aspectos de la sesión del usuario.
+    * Mantenimiento:
+    * Es importante que los desarrolladores mantengan actualizadas las expresiones de seguridad y realicen
+    * pruebas de acceso, ya que un error en la expresión podría permitir accesos no autorizados o bloquear el
+    * acceso a usuarios legítimos.
+
 */
