@@ -58,4 +58,24 @@ import org.springframework.security.access.prepost.PreAuthorize;
     * Puedes aplicar @PreAuthorize en métodos de controladores, servicios, o cualquier bean gestionado por
     * Spring. Si se aplica en la clase, se considera para todos sus métodos, aunque es común aplicarla a
     * métodos concretos para tener mayor control.
+    * Ejemplos Prácticos
+    * Ejemplo Simple: Control basado en Rol
+*/
+@PreAuthorize("hasRole('ADMIN')")
+public void borrarUsuario(Long id) {
+    // *  lógica para borrar un usuario
+}
+/*
+    * Solo los usuarios con el rol ADMIN podrán ejecutar el método borrarUsuario.
+    * Ejemplo con Variables y Parámetros: Supongamos que tienes un método para actualizar los datos de
+    * un usuario y quieres permitir esta acción solamente si el usuario autenticado es el mismo que el usuario
+    * a actualizar o si tiene el rol ADMIN:
+*/
+@PreAuthorize("hasRole('ADMIN') or #id == authentication.principal.id")
+public void actualizarUsuario(Long id, Usuario usuario) {
+    // *  lógica para actualizar el usuario
+}
+/*
+    * En este caso, la expresión comprueba si el usuario tiene el rol ADMIN o si el id pasado como
+    * parámetro es igual al id del usuario autenticado.
 */
