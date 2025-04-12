@@ -92,5 +92,9 @@ public void actualizarUsuario(Long id, Usuario usuario) {
     * Es importante que los desarrolladores mantengan actualizadas las expresiones de seguridad y realicen
     * pruebas de acceso, ya que un error en la expresión podría permitir accesos no autorizados o bloquear el
     * acceso a usuarios legítimos.
-
+    * En resumen, @PreAuthorize es una herramienta declarativa esencial en Spring Security que permite realizar
+    * validaciones de autorización a nivel de método, garantizando que únicamente usuarios que cumplan con
+    * condiciones específicas puedan acceder a ciertos recursos o funcionalidades dentro de la aplicación. Esta
+    * aproximación facilita la centralización y el mantenimiento de las políticas de seguridad en una aplicación
+    * basada en Spring.
 */
