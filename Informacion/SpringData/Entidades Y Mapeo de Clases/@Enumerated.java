@@ -1,0 +1,3 @@
+/*
+    Informacion Enumerated
+*/
