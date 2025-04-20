@@ -31,6 +31,17 @@
     * Cuando una solución se repite una y otra vez en varios proyectos, al final alguien le pone un nombre y explica la solución en detalle. 
     * Básicamente, así es como se descubre un patrón.
     
-    * 
+    * ¿ Por qué debería aprender sobre patrones ? 
+    * La realidad es que podrías trabajar durante años como programador sin conocer un solo patrón. Mucha gente lo hace. 
+    * Incluso en ese caso, podrías estar implementando patrones sin saberlo. Así que, ¿por qué dedicar tiempo a aprenderlos?
+    
+    * Los patrones de diseño son un juego de herramientas de soluciones comprobadas a problemas habituales en el diseño de software.
+    * Incluso aunque nunca te encuentres con estos problemas, conocer los patrones sigue siendo de utilidad, porque te enseña a resolver todo tipo de problemas 
+    * utilizando principios del diseño orientado a objetos.
+    
+    * Los patrones de diseño definen un lenguaje común que puedes utilizar con tus compañeros de equipo para comunicaros de forma más eficiente. 
+    * Podrías decir: “Oh, utiliza un singleton para eso”, y todos entenderían la idea de tu sugerencia. 
+    * No habría necesidad de explicar qué es un singleton si conocen el patrón y su nombre.
+    
     * 
 */
