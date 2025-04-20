@@ -23,5 +23,14 @@
     * La motivación explica en más detalle el problema y la solución que brinda el patrón.
     * La estructura de las clases muestra cada una de las partes del patrón y el modo en que se relacionan.
     * El ejemplo de código en uno de los lenguajes de programación populares facilita la asimilación de la idea que se esconde tras el patrón.
+    
+    * HISTORIA DE LOS PATRONES
+    * ¿Quién inventó los patrones de diseño? Esa es una buena, aunque imprecisa pregunta. 
+    * Los patrones de diseño no son conceptos opacos y sofisticados, al contrario. 
+    * Los patrones son soluciones habituales a problemas comunes en el diseño orientado a objetos.
+    * Cuando una solución se repite una y otra vez en varios proyectos, al final alguien le pone un nombre y explica la solución en detalle. 
+    * Básicamente, así es como se descubre un patrón.
+    
+    * 
     * 
 */
