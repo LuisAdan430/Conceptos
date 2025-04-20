@@ -43,5 +43,18 @@
     * Podrías decir: “Oh, utiliza un singleton para eso”, y todos entenderían la idea de tu sugerencia. 
     * No habría necesidad de explicar qué es un singleton si conocen el patrón y su nombre.
     
-    * 
+    * Clasificación de los patrones
+    * Los patrones de diseño varían en su complejidad, nivel de detalle y escala de aplicabilidad al sistema completo que se diseña. 
+    * Me gusta la analogía de la construcción de carreteras: puedes hacer más segura una intersección instalando semáforos o construyendo un intercambiador 
+    * completo de varios niveles con pasajes subterráneos para peatones.
+    * Los patrones más básicos y de más bajo nivel suelen llamarse idioms.
+    * Normalmente se aplican a un único lenguaje de programación.
+    * Los patrones más universales y de más alto nivel son los patrones de arquitectura. 
+    * Los desarrolladores pueden implementar estos patrones prácticamente en cualquier lenguaje. 
+    * Al contrario que otros patrones, pueden utilizarse para diseñar la arquitectura de una aplicación completa.
+    * Además, todos los patrones pueden clasificarse por su propósito. Este libro cubre tres grupos generales de patrones:
+    * Los patrones creacionales proporcionan mecanismos de creación de objetos que incrementan la flexibilidad y la reutilización de código existente.
+    * Los patrones estructurales explican cómo ensamblar objetos y clases en estructuras más grandes a la vez que se mantiene 
+    * la flexibilidad y eficiencia de la estructura.
+    * Los patrones de comportamiento se encargan de una comunicación efectiva y la asignación de responsabilidades entre objetos.
 */
