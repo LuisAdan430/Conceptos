@@ -3,6 +3,10 @@
     * problemas comunes en el diseño de software. Cada patrón es como un
     * plano que se puede personalizar para resolver un problema de diseño particular de tu código.
     
+    ^ En ingeniería de software, a patrón de diseño es una solución repetible general a un problema común en el diseño de software.
+    ^ Un patrón de diseño no es un diseño terminado que se puede transformar directamente en código.
+    ^ Es una descripción o plantilla de cómo resolver un problema que se puede utilizar en muchas situaciones diferentes.
+    
     * Los patrones de diseño son soluciones habituales a problemas que ocurren con frecuencia en el diseño de software. 
     * Son como planos prefabricados que se pueden personalizar para resolver un problema de diseño recurrente en tu código.
     * No se puede elegir un patrón y copiarlo en el programa como si se tratara de funciones o bibliotecas ya preparadas. 
@@ -11,6 +15,17 @@
     * A menudo los patrones se confunden con algoritmos porque ambos conceptos describen soluciones típicas a problemas conocidos. 
     * Mientras que un algoritmo siempre define un grupo claro de acciones para lograr un objetivo, un patrón es una descripción de más alto nivel de una solución.
     * El código del mismo patrón aplicado a dos programas distintos puede ser diferente.
+     
+    ^ Usos de los Patrones de Diseño
+    ^ Los patrones de diseño pueden acelerar el proceso de desarrollo al proporcionar paradigmas de desarrollo probados y probados. 
+    ^ El diseño efectivo del software requiere considerar problemas que pueden no ser visibles hasta más adelante en la implementación. 
+    ^ y mejora la legibilidad del código para codificadores y arquitectos familiarizados con los patrones.
+    ^ A menudo, las personas solo entienden cómo aplicar ciertas técnicas de diseño de software a ciertos problemas.
+    ^ Estas técnicas son difíciles de aplicar a una gama más amplia de problemas.
+    ^ Los patrones de diseño proporcionan soluciones generales, documentadas en un formato que no requiere detalles vinculados a un problema en particular.
+    ^ Además, los patrones permiten a los desarrolladores comunicarse utilizando
+    ^ nombres conocidos y bien entendidos para las interacciones de software. 
+    ^ Los patrones de diseño comunes se pueden mejorar con el tiempo, haciéndolos más robustos que los diseños ad-hoc.
     
     * Una analogía de un algoritmo sería una receta de cocina: ambos cuentan con pasos claros para alcanzar una meta. 
     * Por su parte, un patrón es más similar a un plano, ya que puedes observar cómo son su resultado y sus funciones,
@@ -57,4 +72,22 @@
     * Los patrones estructurales explican cómo ensamblar objetos y clases en estructuras más grandes a la vez que se mantiene 
     * la flexibilidad y eficiencia de la estructura.
     * Los patrones de comportamiento se encargan de una comunicación efectiva y la asignación de responsabilidades entre objetos.
+    
+    ^ Patrones de diseño creacional
+    ^ Estos patrones de diseño tienen que ver con la instanciación de clase.
+    ^ Este patrón se puede dividir en patrones de creación de clase y patrones de creación de objetos.
+    ^ Mientras que los patrones de creación de clases usan la herencia de manera efectiva en el proceso de instanciación,
+    ^ los patrones de creación de objetos usan la delegación de manera efectiva para hacer el trabajo.
+    ^ Fábrica Abstracta : Crea una instancia de varias familias de clases.
+    ^ Constructor : Separa la construcción de objetos de su representación.
+    ^ Método de Fábrica : Crea una instancia de varias clases derivadas.
+    ^ Piscina de Objetos:  Evite la adquisición costosa y la liberación de recursos reciclando objetos que ya no están en uso
+    ^ Prototipo : Una instancia totalmente inicializada para ser copiada o clonada.
+    ^ Singleton : Una clase de la cual solo puede existir una sola instancia.
+
+    
+
+
+     
+     
 */
