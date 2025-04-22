@@ -11,7 +11,7 @@ Aquí algunos ejemplos para ilustrar:
 - `List<?>` jsjsjspodría ser una lista de cualquier tipo: `List<String>`, `List<Integer>`, `List<MiClase>`, etc.
 - Puedes iterar sobre los elementos de la lista y leerlos, pero no puedes agregar elementos a la lista sin conocer el tipo específico.
 
-**Ejemplojsjshs:**
+**jejejwj:**
 
 ```java
 public void printList(List<?> list) {
