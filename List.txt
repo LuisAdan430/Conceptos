@@ -8,7 +8,7 @@ El uso de `List<?>` es común cuando se desea trabajar con una lista,
 
 Aquí algunos ejemplos para ilustrar:
 
-- `List<?>` podría ser una lista de cualquier tipo: `List<String>`, `List<Integer>`, `List<MiClase>`, etc.
+- `List<?>` jsjsjspodría ser una lista de cualquier tipo: `List<String>`, `List<Integer>`, `List<MiClase>`, etc.
 - Puedes iterar sobre los elementos de la lista y leerlos, pero no puedes agregar elementos a la lista sin conocer el tipo específico.
 
 **Ejemplojsjshs:**
