@@ -170,3 +170,56 @@ public class Empleado {
 }
 
 // * Esto filtrará automáticamente todas las consultas sobre Empleado para excluir a Tester. Pero ⚠️ ojo: también afectará findById, count(), etc.
+
+/*
+    * Informacion Detallada de la property DistriminatorType = DiscriminatorType.STRING
+    * discriminatorType = DiscriminatorType.STRING
+    * Esta parte de la anotación @DiscriminatorColumn le dice a JPA/Hibernate qué tipo de
+    * dato se usará en la columna del discriminador (es decir, qué tipo de dato tendrá la
+    * columna que diferencia entre las subclases).
+    * Opciones disponibles
+    * La enumeración DiscriminatorType tiene tres posibles valores:
+    * Tipo	                        Descripción
+    * DiscriminatorType.STRING	    (Por defecto) Usa texto (cadena de caracteres). Ideal para claridad y legibilidad.
+    * DiscriminatorType.CHAR	    Usa un solo carácter como discriminador.
+    * DiscriminatorType.INTEGER	    Usa un número entero para diferenciar los tipos.
+    * Ejemplo usando STRING
+*/
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "tipo_empleado", discriminatorType = DiscriminatorType.STRING)
+public abstract class Empleado {
+    ...
+}
+@Entity
+@DiscriminatorValue("GERENTE")
+public class Gerente extends Empleado {
+    ...
+}
+@Entity
+@DiscriminatorValue("DEV")
+public class Desarrollador extends Empleado {
+    ...
+}
+
+/*
+    * Esto generará una tabla como:
+    * id	    nombre	    tipo_empleado	    departamento	    lenguajeFavorito
+    * 1	        Ana	        GERENTE	            Finanzas	        NULL
+    * 2	        Lucas	    DEV	                NULL	            Java
+    * ¿Por qué usar STRING?
+    * Más legible cuando inspeccionas la base de datos.
+    * Más explícito: sabes qué clase representa cada fila.
+    * Mejor para mantenimiento: si cambias nombres de clase, no se rompe nada si mantienes el @DiscriminatorValue.
+    * ¿Y si no especificas discriminatorType?
+    * Por defecto es como si escribieras:
+*/
+@DiscriminatorColumn(name = "tipo_empleado", discriminatorType = DiscriminatorType.STRING)
+
+/*
+    * Comparativa rápida
+    * DiscriminatorType	            Ejemplo de valor	        Ventajas	        Desventajas
+    * STRING	                    "GERENTE"	                Legible, claro	    uede ocupar más espacio
+    * CHAR	                        'G'                     	Ahorra espacio	    Poco legible, limitado
+    * INTEGER	                    1	                        Muy compacto	    Requiere mapa mental / código
+*/
