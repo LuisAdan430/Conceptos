@@ -52,5 +52,33 @@ public class Desarrollador extends Empleado {
 // * Y JPA usará el valor en tipo_empleado para saber si la fila es un Gerente o un Desarrollador.
 
 
+// * GET ALL
+/*
+    * Cuando haces un getAll() de la entidad base (Empleado), JPA te devuelve una lista de
+    * instancias que pueden ser de cualquiera de las clases hijas, como Gerente,
+    * Desarrollador, etc. Esto funciona gracias al discriminador, que le indica a Hibernate qué
+    * tipo de objeto instanciar para cada fila.
+    * Ejemplo
+    * Supón que haces esto con un JpaRepository:
+*/
+public interface EmpleadoRepository extends JpaRepository<Empleado, Long> {
+}
+// * Y luego:
+List<Empleado> empleados = empleadoRepository.findAll();
+for (Empleado emp : empleados) {
+    if (emp instanceof Gerente) {
+        System.out.println("Es un gerente: " + ((Gerente) emp).getDepartamento());
+    } else if (emp instanceof Desarrollador) {
+        System.out.println("Es un dev: " + ((Desarrollador) emp).getLenguajeFavorito());
+    }
+}
 
+/*
+    * JPA automáticamente instancia Gerente o Desarrollador según el valor de la columna tipo_empleado.
+    * En resumen:
+    * Solo hay una tabla.
+    * Hibernate lee el valor del discriminador.
+    * Hibernate instancia la clase correspondiente.
+    * Puedes tratar todo como Empleado, pero castearlo según necesidad.
+*/
 
