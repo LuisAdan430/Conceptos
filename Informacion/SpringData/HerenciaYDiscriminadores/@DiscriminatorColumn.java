@@ -114,3 +114,59 @@ empleadoRepository.save(t);
     * No es obligatorio usar @DiscriminatorValue, pero es recomendable para mayor control, claridad y para evitar problemas si cambias el nombre de la clase.
     * Si no lo usas, Hibernate usa el nombre de la clase como valor por defecto.
 */
+
+/*
+    * ¿ Es posible colocar algo para que la anotacion no tome la clase heredada ? 
+    * Sí, es posible excluir una subclase heredada de los resultados cuando haces un getAll()
+    * de la clase base, pero no directamente con una anotación. No existe una anotación tipo
+    * @ExcludeFromDiscriminator o algo así en JPA. Sin embargo, hay formas de lograrlo:
+    * OPCIONES DISPONIBLES
+    * Filtrar en la consulta manualmente
+    * Puedes usar una consulta JPQL que excluya el tipo del discriminador que no quieres:
+*/
+@Query("SELECT e FROM Empleado e WHERE TYPE(e) <> Tester")
+List<Empleado> findAllExceptTester();
+
+// * También podrías usar el valor del discriminador:
+
+@Query("SELECT e FROM Empleado e WHERE e.class != Tester")
+List<Empleado> findAllExceptTester();
+
+// * O si estás usando @DiscriminatorColumn(name = "tipo_empleado") con valores tipo STRING, puedes filtrar así:
+
+@Query("SELECT e FROM Empleado e WHERE TYPE(e) NOT IN (Tester)")
+List<Empleado> findOnlyGerentesYDevs();
+
+
+/*
+    *  Crear una subinterfaz del repositorio con restricciones
+    *  Si no quieres que la clase Tester siquiera aparezca en la capa de datos, podrías separar los repositorios:
+*/
+
+public interface EmpleadoSinTestersRepository extends JpaRepository<Empleado, Long> {
+    @Query("SELECT e FROM Empleado e WHERE TYPE(e) <> Tester")
+    List<Empleado> findAllSinTesters();
+}
+
+/*
+    * ¿Existe una anotación para excluir subclases?
+    * No. JPA no proporciona una anotación como:
+*/
+@ExcludeFromBaseGetAll
+public class Tester extends Empleado { ... }
+
+/*
+    * Así que si necesitas excluir una clase, lo tienes que hacer a nivel de lógica de consulta.
+    * Alternativa "hacker": usar @Where
+    * Si usas Hibernate (no estándar JPA), puedes usar @Where:
+*/
+
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "tipo_empleado")
+@Where(clause = "tipo_empleado != 'Tester'")
+public class Empleado {
+   ...
+}
+
+// * Esto filtrará automáticamente todas las consultas sobre Empleado para excluir a Tester. Pero ⚠️ ojo: también afectará findById, count(), etc.
