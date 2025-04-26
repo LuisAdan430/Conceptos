@@ -81,4 +81,36 @@ for (Empleado emp : empleados) {
     * Hibernate instancia la clase correspondiente.
     * Puedes tratar todo como Empleado, pero castearlo según necesidad.
 */
+// * ¿ Que sucede si se instancia y no se coloca la anotacion?
 
+/*
+    * Si creas una clase hija de Empleado pero no le pones la anotación @DiscriminatorValue,
+    * Hibernate la sigue mapeando, pero con un comportamiento importante:
+    * ¿Qué sucede?
+    * Hibernate usará automáticamente el nombre de la clase como el valor del discriminador (tipo_empleado).
+    * Es decir, si tu clase se llama Tester y no le pones @DiscriminatorValue("TESTER"), Hibernate asumirá que el valor tipo_empleado = "Tester" corresponde a esa clase.
+    * Ejemplo
+*/
+@Entity
+public class Tester extends Empleado {
+    private String herramientaTest;
+}
+// * No usas @DiscriminatorValue.
+// * Entonces, si insertas un objeto de tipo Tester:
+Tester t = new Tester();
+t.setNombre("Carlos");
+t.setHerramientaTest("Selenium");
+empleadoRepository.save(t);
+
+// * Hibernate guardará algo como:
+// * id | nombre  | tipo_empleado | herramientaTest
+// *  1 | Carlos  | Tester        | Selenium
+/*
+    * Y cuando hagas empleadoRepository.findAll(), Hibernate:
+    * Verá tipo_empleado = "Tester",
+    * Buscará una clase hija de Empleado que se llame "Tester",
+    * Y devolverá una instancia de esa clase correctamente.
+    * Conclusión
+    * No es obligatorio usar @DiscriminatorValue, pero es recomendable para mayor control, claridad y para evitar problemas si cambias el nombre de la clase.
+    * Si no lo usas, Hibernate usa el nombre de la clase como valor por defecto.
+*/
