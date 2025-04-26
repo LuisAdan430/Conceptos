@@ -223,3 +223,54 @@ public class Desarrollador extends Empleado {
     * CHAR	                        'G'                     	Ahorra espacio	    Poco legible, limitado
     * INTEGER	                    1	                        Muy compacto	    Requiere mapa mental / código
 */
+
+/*
+    * Informaciomn de la anotacion DiscriminatorType.INTEGER
+    * Escenario: Herencia con DiscriminatorType.INTEGER
+    * Vamos a modelar una jerarquía de empleados con tres tipos: Empleado (base), Gerente y
+    * Desarrollador. Esta vez usaremos números enteros para diferenciarlos.
+    * Entidad base
+*/
+import jakarta.persistence.*;
+
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "tipo_empleado", discriminatorType = DiscriminatorType.INTEGER)
+public abstract class Empleado {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String nombre;
+}
+// * Subclase: Desarrollador
+
+@Entity
+@DiscriminatorValue("2")
+public class Desarrollador extends Empleado {
+    private String lenguajeFavorito;
+}
+
+/*
+    * Resultado en base de datos
+    * La tabla empleado quedará así:
+    * id	            nombre	            tipo_empleado	            departamento	            lenguajeFavorito
+    * 1	                Ana	                1	                        Finanzas	                NULL
+    * 2	                Leo	                2	                        NULL	                    Java
+    * Aquí tipo_empleado = 1 significa Gerente, y 2 significa Desarrollador.
+    * ¿Cuándo usar INTEGER?
+    * Ventajas
+    * Menor espacio (útil en tablas muy grandes).
+    * Puede ser más rápido en índices y búsquedas.
+    * Desventajas
+    * Poco legible si consultas la tabla directamente.
+    * Necesitas tener claro el mapeo entre número y clase.
+    * Si olvidas agregar @DiscriminatorValue, no sabrás qué número le tocó.
+    * Recomendación
+    * Usa DiscriminatorType.STRING si:
+    * Priorizas claridad y mantenimiento.
+    * Te gusta ver los valores como "GERENTE" o "DEV" en la base de datos.
+    * Usa INTEGER si:
+    * La tabla es muy grande y buscas optimización.
+    * El valor del discriminador está controlado externamente (por ejemplo, mapeado desde otro sistema).
+*/
