@@ -1,5 +1,4 @@
 Sin cambios dia 09/07/2024
 Sin cambios dia 10/07/2024 Cambios en JSF En Proyecto ASP
 sin cambios dia 22/04/2025
-Sin cambios
-sin cambios 
+No hubo cambios el dia 01/05/2025 se avanzo con trabajo dn Zurich refactorizacion de codigo  
